@@ -33,20 +33,24 @@ Entra en la carpeta del editor para instalar las dependencias y ejecutar el serv
 cd CMS
 npm install
 npm run dev
+```
 
 ### 2. Servidor (Python)
+```
 cd Server
 pip install -r requirements.txt
 python app.py
+```
 
 ### 3. Render (Flutter)
+```
 cd Flutter
 flutter pub get
 flutter run
-
----
+```
 
 **## Muestra del contrato JSON**
+```
 {
   "id": "row_unique_123",
   "columns": 2,
@@ -66,7 +70,7 @@ flutter run
     }
   ]
 }
-
+```
 ---
 
 ##  Contribuciones y Feedback
@@ -80,4 +84,11 @@ Si tienes ideas sobre:
 - **Cualquier "Clean Code"** que consideres necesario.
 
 Toda crítica constructiva me ayuda mejorar como desarrollador
+
+---
+Demo
+
+
+https://github.com/user-attachments/assets/eab742ab-3da2-4769-8f93-812fbf7a75aa
+
 
