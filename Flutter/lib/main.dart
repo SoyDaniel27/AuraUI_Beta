@@ -33,14 +33,17 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   late Future<dynamic> _data;
-  String currentPage = 'Page 1'; //Valor por defecto
+  String currentPage = 'Page 1'; // Default value - Valor por defecto
 
   @override
   void initState() {
     super.initState();
-    _data = requestJSON(); //LLamda al servidor
+    _data = requestJSON(); // Call to the server - LLamada al servidor
   }
 
+  //Promise to refresh the page
+  //Saving the current page and requesting the information from the server again
+  
   //Promesa para hacer el refresh en la pagina
   //Guardando en que pagina estamos y volviendo a solicitar la informacion al sevidor
   Future<void> _handleRefresh() async {
@@ -61,10 +64,10 @@ class _MyHomePageState extends State<MyHomePage> {
       body: FutureBuilder(future: _data, 
       builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot){
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return CircularProgressIndicator(); //Espera de la respuesta
+          return CircularProgressIndicator(); //Waiting for a response - Espera de la respuesta
         }
         else if (snapshot.hasError) {
-          return Text('Error: ${snapshot.error}'); //Error en la comunicacion
+          return Text('Error: ${snapshot.error}'); //Communication error - Error en la comunicacion
         }
         else if (snapshot.hasData) {
           final data = snapshot.data;
@@ -78,7 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   AuraRow(data: row,
                     onPageChange: (String newPage) {
                       setState(() {
-                        currentPage = newPage; // Esto refresca el FutureBuilder con la nueva página
+                        currentPage = newPage; // This refreshes FutureBuilder with the new page - Esto refresca el FutureBuilder con la nueva página
                       });
                     },
                   )
