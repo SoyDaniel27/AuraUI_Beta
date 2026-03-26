@@ -79,21 +79,16 @@ Contributions are more than welcome! This is a constantly evolving project, and 
 
 If you have ideas about:
 - **Performance improvements** in Flutter rendering.
-
 - **New Widget types** for the CMS.
-
 - **API optimization** in Python.
-
 - **Any "Clean Code"** you consider necessary.
 
 All constructive criticism helps me improve as a developer.
 
 ---
 
-
-
 # AuraUI_Beta ESP
-# 🚀 AuraUI: Server-Driven UI (SDUI) Framework
+# 🚀 AuraUI: Server-Driven UI (SDUI) Micro - Framework
 
 **AuraUI** es un ecosistema de desarrollo diseñado para la creación y renderizado dinámico de interfaces. Este proyecto permite diseñar componentes visualmente en un panel administrativo, distribuirlos a través de una API y visualizarlos de forma nativa en una aplicación móvil sin necesidad de recompilar el código del cliente.
 
