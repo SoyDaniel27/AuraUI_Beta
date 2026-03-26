@@ -4,9 +4,11 @@ import AuraUILogo from '../../assets/logo.png'
 
 export default function Topbar({schema}) {
   const sendData = async () => {
+    // Establish communication with the server on this line, move to your Python IP address with the host 0.0.0.0 in Flask
     // Hacer la comunicacion con el servidor en esta linea mover a su IP de python con el host 0.0.0.0 en flask
     try {
       const url = 'http://ip/project/save';
+      //POST method to the server
       //Metodo POST al servidor
       const response = await fetch(url, {
         method: 'POST',
@@ -15,11 +17,13 @@ export default function Topbar({schema}) {
         },
         body: JSON.stringify(schema) 
       });
+      //If the project was uploaded successfully
       //Si se subio correctamente el proyecto
       if (response.ok) {
         const result = await response.json();
         console.log("Data saved successfully!", result);
         alert("Project saved successfully");
+        //If there were errors
         //Si existieron errores
       } else {
         console.error("Error");
