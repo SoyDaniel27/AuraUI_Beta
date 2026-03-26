@@ -6,7 +6,7 @@ import RowPropierties from './components/sidebar/row_propierties/RowPropierties'
 import './App.css'
 
 function App() {
-
+  // Start of JSON contract with 3 empty pages
   // Inicio del contrato JSON con las 3 paginas vacias
   const [pages, setPages] = useState({
     "Page 1": [],
@@ -16,18 +16,20 @@ function App() {
   const [currentPage, setCurrentPage] = useState("Page 1"); //Inicio en Pagina 1
   const [selectedRow, setSelectedRow] = useState(null);
   const [selectedSlot, setSelectedSlot] = useState(null);
-
+  // Helper to get the divs of the current page
   // Helper para obtener los divs de la página actual
   const currentDivs = pages[currentPage];
 
+  // Select Handler
   // Manejador del Select
   const handlePageChange = (e) => {
     setCurrentPage(e.target.value);
+    // Clean the selection when changing pages
     // Limpiar selección al cambiar de página
     setSelectedRow(null); 
     setSelectedSlot(null); 
   };
-
+  // Update addrow to use page state
   // Actualizar addrow para que use el estado de páginas
   const addrow = () => {
     const newrow = {
@@ -44,7 +46,7 @@ function App() {
       [currentPage]: [...currentDivs, newrow]
     });
   };
-   
+  // Selector to determine if a Row or a Slot was selected
   // Selector para saber si se escogio un Row o un Slot
   const click_row = (row) => {
 
@@ -58,7 +60,7 @@ function App() {
     setSelectedSlot(slot)
     setSelectedRow(null)
   }
-
+  // Update Row or Slot information
   // Actualizar la informacion de la Row o del Slot
   const updateRowData = (updatedRow) => {
     const updatedDivs = currentDivs.map(d => d.id === updatedRow.id ? updatedRow : d);
@@ -75,7 +77,7 @@ function App() {
     setPages({ ...pages, [currentPage]: updatedDivs });
     setSelectedSlot(updatedSlot);
   };
-
+  // Delete row
   // Elimar el Row 
   const deleteRow = (id) => {
     const updatedDivs = currentDivs.filter(row => row.id !== id);
@@ -83,22 +85,24 @@ function App() {
       ...pages,
       [currentPage]: updatedDivs
     });
-
+    // Clean the selection if the deleted row was selected
     // Limpiamos la selección si la fila eliminada era la que estaba seleccionada
     if (selectedRow?.id === id) {
       setSelectedRow(null);
     }
   }
-
+  //Function to display the slot information in HTML
   //Funcion para mostrar el slot con su informacion en codigo HTML 
   const data_slot = (slot) => {
     const currentslot = slot;
+    // If is a text
     //Si es un texto
     if (currentslot.widget[0].type == 'text'){
       return (
         <p style={{fontSize:currentslot.widget[0].fontsize, whiteSpace:'pre-wrap', wordBreak:'break-word', color: `rgba(${currentslot.widget[0].color[0]}, ${currentslot.widget[0].color[1]}, ${currentslot.widget[0].color[2]}, ${currentslot.widget[0].color[3]})`}}>{currentslot.widget[0].text}</p>
       )
-    //Si es una imagen y verificar que su source esta vacia
+    //If is an image and check if the source is null
+    //Si es una imagen y verificar que el source esta vacia
     } else if (currentslot.widget[0].type == 'image' && currentslot.widget[0].source == ''){
       return (
         <p>Please provide the source of the image</p>
@@ -109,6 +113,7 @@ function App() {
         alt="Not Found" 
         style={{ objectFit:'contain', objectPosition:'center', height: '90%'}} // Opcional: ajustar el tamaño
       />)
+     // If is a button
      // Si es un boton 
     } else if (currentslot.widget[0].type == 'button') {
       return (
