@@ -7,14 +7,17 @@ class AuraButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //Function that retrieves the GoTo value from the JSON in the button widget
     //Funcion que rescata el valor GoTo del JSON en el widget button
     return ElevatedButton(onPressed: (){
       onPageChange(data['GoTo']);
     },
+      //Button styles (button color)
       //Estilos del boton (color del boton)
       style: ElevatedButton.styleFrom(
         backgroundColor: Color.fromRGBO(data['backgroundColor'][0], data['backgroundColor'][1], data['backgroundColor'][2], data['backgroundColor'][3].toDouble())
       ), 
+      //Button text and text color
       //Texto y color del texto del boton
     child: Text(
       data['text'],
