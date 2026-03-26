@@ -4,27 +4,35 @@ import DeleteIcon from '../../../assets/icons/delete.png';
 import { RgbaColorPicker } from "react-colorful";
 
 export default function WidgetPropierties({ slot, onChange }) {
+  // Status for Slot Background Color
   // Estado para el color del Fondo del Slot
   const [slotcolor, setSlotColor] = useState({ r: 255, g: 255, b: 255, a: 1 });
+  // Status for Text Color
   // Estado para el color del Texto del Widget
   const [textcolor, setTextColor] = useState({ r: 0, g: 0, b: 0, a: 1 });
+  // Status for Button Color
   // Estado para el color del boton
   const [buttonColor, setButtonColor] = useState({ r: 255, g: 255, b: 255, a: 1})
+  // Status for Text Button Color
   // Estado para el color del texto del boton
   const [buttontextColor, setButtonTextColor] = useState({ r: 0, g: 0, b: 0, a: 1 })
+  //Direction of where the page is going
   //Direccion de hacia donde va la pagina
   const [page, setPage] = useState('')
 
+  //Function to update the FoTo property of the button
   //Funcion para actualizar la propiedad GoTo del button
   const changeGotTo = (e) => {
     updateWidget('GoTo', e.target.value)
   } 
 
+  //Function to delete the widget
   //Funcion para eliminar el widget  
   const deleteWidget = () => {
     onChange({...slot, widget:[]});
   }
 
+  // Synchronize colors when the selected slot changes
   // Sincronizar los colores cuando el slot seleccionado cambia
   useEffect(() => {
     if (slot) {
@@ -40,8 +48,9 @@ export default function WidgetPropierties({ slot, onChange }) {
         setTextColor({ r: c[0], g: c[1], b: c[2], a: c[3] });
       }
     }
-  }, [slot.id]); // Se ejecuta cada vez que cambias de slot
+  }, [slot.id]); // It runs every time you change slots - Se ejecuta cada vez que cambias de slot 
 
+  // Function to update the slot background
   // Función para actualizar el fondo del slot
   const updateSlotBackground = (newColor) => {
     setSlotColor(newColor);
@@ -49,6 +58,7 @@ export default function WidgetPropierties({ slot, onChange }) {
     onChange({ ...slot, backgroundColor: colorArray });
   };
 
+  // Function to update widget properties using key:value
   // Función para actualizar propiedades del widget con clave:valor
   const updateWidget = (key, value) => {
     const updatedWidgets = slot.widget.map((w, index) => {
@@ -58,6 +68,7 @@ export default function WidgetPropierties({ slot, onChange }) {
     onChange({ ...slot, widget: updatedWidgets });
   };
 
+  // Specific function for text color
   // Función específica para el color del texto
   const handleTextColorChange = (newColor) => {
     setTextColor(newColor);
@@ -65,6 +76,7 @@ export default function WidgetPropierties({ slot, onChange }) {
     updateWidget('color', colorArray);
   };
 
+  //Function to change the button color
   //Funcion para cambiar el color del boton
   const handleButtonColorChange = (newColor) => {
     setTextColor(newColor);
@@ -72,13 +84,14 @@ export default function WidgetPropierties({ slot, onChange }) {
     updateWidget('backgroundColor', colorArray);
   };
 
+  //Function to change the color of the button text
   //Funcion para cambiar el color del texto del boton
   const handleTextButtonColorChange = (newColor) => {
     setTextColor(newColor);
     const colorArray = [newColor.r, newColor.g, newColor.b, newColor.a];
     updateWidget('textColor', colorArray);
   };
-
+    //Check if a widget exists in the slot
     //Verificacion si existe un widget en el slot
   const data_slot = () => {
     if (slot.widget.length === 0) {
