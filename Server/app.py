@@ -5,6 +5,8 @@ import json
 app = Flask(__name__)
 CORS(app) 
 '''
+The POST method that Python uses to receive the JSON contract from the CMS and then save it to a folder on the computer.
+
 Metodo POST que ocupa python para poder recibir el contrato JSON del CMS para que despues lo guarde en 
 una carpeta del equipo
 '''
@@ -21,6 +23,8 @@ def uplodad():
     return jsonify({"message": "Project saved", "pages": data}), 201
 
 '''
+The GET method that Python uses to send the JSON contract to Flutter for subsequent rendering on the device
+
 Metodo GET que ocupa python para poder mandar el contrato JSON a Flutter para que posterior renderizacion
 en el dispositivo
 '''
