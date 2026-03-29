@@ -1,3 +1,7 @@
+**#Demo**
+https://github.com/user-attachments/assets/eab742ab-3da2-4769-8f93-812fbf7a75aa
+
+
 # AuraUI_Beta ENG
 # 🚀 AuraUI: Server-Driven UI (SDUI) Micro - Framework
 
@@ -175,9 +179,6 @@ Si tienes ideas sobre:
 Toda crítica constructiva me ayuda mejorar como desarrollador
 
 ---
-Demo
 
-
-https://github.com/user-attachments/assets/eab742ab-3da2-4769-8f93-812fbf7a75aa
 
 
